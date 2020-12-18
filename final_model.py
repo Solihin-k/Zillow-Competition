@@ -28,7 +28,8 @@ drop_cols = ['censustractandblock', 'rawcensustractandblock', 'fips',
 # create model
 p = preprocessor(cols_to_drop = drop_cols)
 
-gbm = GradientBoostingRegressor(n_estimators = 980, learning_rate=0.01, max_depth=3, loss='lad', subsample=0.5)
+gbm = GradientBoostingRegressor(n_estimators = 980, learning_rate = 0.01, 
+                                max_depth = 3, loss = 'lad', subsample = 0.5)
 
 my_model = Pipeline([('preprocessor', p), ('regressor', gbm)])
 
@@ -79,7 +80,7 @@ def make_sub_file(model, chunksize = 50000):
 
  	return submission_df.round(4).reset_index()
 
-make_sub_file(my_model, chunksize = 50000).to_csv('model_submission.csv', index=False)
+make_sub_file(my_model, chunksize = 50000).to_csv('model_submission.csv', index = False)
 
 # because of memory issues, garbage collect
 gc.collect()
