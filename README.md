@@ -15,7 +15,7 @@ logerror=log(Zestimate)−log(SalePrice)
 ## Training Score
 
 Best score:
-- MAE - 
+- MAE - 0.06640
 
 ## Competition Score (late submission)
 
