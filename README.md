@@ -19,7 +19,7 @@ Best score:
 
 ## Competition Score (late submission)
 
-Best score: 
+Best score (top 40%): 
 - Private score - 0.7550
 - Public score - 0.6466
 
