@@ -30,7 +30,7 @@ p = preprocessor(cols_to_drop = drop_cols)
 
 # create model
 gbm = GradientBoostingRegressor(n_estimators = 1000, max_depth = 5, 
-                                min_samples_split = 4, max_features = 20, 
+                                min_samples_split = 3, max_features = 15, 
                                 learning_rate = 0.01, loss = 'lad', subsample = 0.8)
 
 my_model = Pipeline([('preprocessor', p), ('regressor', gbm)])
