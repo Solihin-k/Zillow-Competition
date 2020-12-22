@@ -17,19 +17,21 @@ X_train, y_train = get_train_dataset('train_2016_v2', 'properties_2016')
 
 # columns to drop
 drop_cols = ['censustractandblock', 'rawcensustractandblock', 'fips', 
-             'airconditioningtypeid', 'lotsizesquarefeet', 'parcelid', 
-             'propertylandusetypeid', 'regionidcounty', 'poolsizesum', 
-             'regionidcity', 'unitcnt', 'architecturalstyletypeid', 
-             'regionidneighborhood', 'regionidzip', 'buildingqualitytypeid', 
-             'propertycountylandusecode', 'propertyzoningdesc', 'poolcnt', 
-             'pooltypeid10', 'pooltypeid2', 'pooltypeid7', 'storytypeid', 
-             'assessmentyear', 'decktypeid', 'buildingclasstypeid']
+             'airconditioningtypeid', 'parcelid', 'propertylandusetypeid', 
+             'regionidcounty', 'poolsizesum', 'regionidcity', 
+             'unitcnt', 'architecturalstyletypeid', 'regionidneighborhood', 
+             'regionidzip', 'buildingqualitytypeid', 'propertycountylandusecode', 
+             'propertyzoningdesc', 'poolcnt', 'pooltypeid10', 'pooltypeid2', 
+             'pooltypeid7', 'storytypeid', 'assessmentyear', 'decktypeid', 
+             'buildingclasstypeid']
 
-# create model
+# preprocess data
 p = preprocessor(cols_to_drop = drop_cols)
 
-gbm = GradientBoostingRegressor(n_estimators = 980, learning_rate = 0.01, 
-                                max_depth = 3, loss = 'lad', subsample = 0.5)
+# create model
+gbm = GradientBoostingRegressor(n_estimators = 1000, max_depth = 5, 
+                                min_samples_split = 4, max_features = 20, 
+                                learning_rate = 0.01, loss = 'lad', subsample = 0.8)
 
 my_model = Pipeline([('preprocessor', p), ('regressor', gbm)])
 
