@@ -39,10 +39,12 @@ class preprocessor:
         # add col has_pool
         features['has_pool'] = ['Yes' if i == 1 else 'No' for i in features['poolcnt']]
         
+        # fill missing values for categorical features
         features['hashottuborspa'].fillna('False', inplace = True)
         features['fireplaceflag'].fillna('False', inplace = True)
         features['taxdelinquencyflag'].fillna('N', inplace = True)
 
+        # feature engineering
         features['prop_age'] = 2020 - features['yearbuilt']
         features['total_rm_cnt'] = features['bathroomcnt'] + features['bedroomcnt']
         features['structure_value_psf'] = features['structuretaxvaluedollarcnt'] / features['calculatedfinishedsquarefeet']
