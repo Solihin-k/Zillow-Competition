@@ -25,3 +25,4 @@ Best score (top 40%):
 
 ## Feature Importance
 
+![top_20_features](feature_importance.png)
